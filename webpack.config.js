@@ -7,7 +7,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, '/public'),
     publicPath: '/',
-    filename: 'bundle.js'
+    filename: '/public/bundle.js'
   },
   module: {
     preLoaders: [
