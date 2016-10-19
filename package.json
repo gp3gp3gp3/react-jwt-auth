@@ -1,0 +1,12 @@
+{
+  "name": "react-jwt-auth",
+  "version": "1.0.0",
+  "description": "Sandboxing front end user authentication using jwt tokens",
+  "main": "index.js",
+  "repository": {
+    "url": "https://github.com/gp3gp3gp3/react-jwt-auth.git",
+    "type": "git"
+  },
+  "author": "George Paul <george.allen.paul.3@gmail.com>",
+  "license": "MIT"
+}
