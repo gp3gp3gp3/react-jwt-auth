@@ -7,6 +7,9 @@
     "url": "https://github.com/gp3gp3gp3/react-jwt-auth.git",
     "type": "git"
   },
+  "engines":{
+    "node": "6.8.1"
+  },
   "scripts": {
     "lint": "standard",
     "build": "webpack",
