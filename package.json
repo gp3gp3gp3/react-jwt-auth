@@ -11,7 +11,7 @@
     "node": "6.8.1"
   },
   "scripts": {
-    "start": "webpack & node server",
+    "start": "webpack && node server",
     "lint": "standard",
     "build": "webpack",
     "watch": "webpack --watch"
