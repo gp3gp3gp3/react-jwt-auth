@@ -9,6 +9,6 @@ const publicPath = path.resolve(__dirname, 'public')
 
 app.use(express.static(publicPath))
 
-app.listen(port, function() {
+app.listen(port, function () {
   console.log('Server running on port ' + port)
 })
