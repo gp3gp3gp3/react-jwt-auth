@@ -8,11 +8,11 @@ module.exports = {
   ],
   output: {
     path: path.join(__dirname, 'public'),
-    filename: 'bundle.js'
-    publicPath: '/public',
+    filename: 'bundle.js',
+    publicPath: '/public'
   },
   plugins: [
-    new webpack.optimize,DedupePlugin(),
+    new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
       minimize: true,
       compress: {
