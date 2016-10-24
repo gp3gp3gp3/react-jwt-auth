@@ -1,14 +1,19 @@
 const path = require('path')
+const webpack = require('webpack')
 
 module.exports = {
+  devtool: 'eval',
   entry: [
-    './src/index.js'
+    './src/index'
   ],
   output: {
-    path: path.join(__dirname, '/public'),
-    publicPath: '/',
-    filename: './public/bundle.js'
+    path: path.join(__dirname, 'public'),
+    filename: 'bundle.js',
+    publicPath: '/public/'
   },
+  plugins: [
+    new webpack.NoErrorsPlugin()
+  ],
   module: {
     preLoaders: [
       {

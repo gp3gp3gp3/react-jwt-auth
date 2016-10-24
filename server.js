@@ -1,14 +1,15 @@
-const express = require('express')
 const path = require('path')
+const express = require('express')
 
-const app = express()
+module.exports = {
+  app: function () {
+    const app = express()
+    const indexPath = path.join(__dirname, 'index.html')
+    const publicPath = express.static(path.join(__dirname, 'public'))
 
-const isProduction = process.env.NODE_ENV === 'production'
-const port = isProduction ? process.env.PORT : 3000
-const publicPath = path.resolve(__dirname, 'public')
+    app.use('/public', publicPath)
+    app.get('/', function (_, res) { res.sendFile(indexPath) })
 
-app.use(express.static(publicPath))
-
-app.listen(port, function () {
-  console.log('Server running on port ' + port)
-})
+    return app
+  }
+}
