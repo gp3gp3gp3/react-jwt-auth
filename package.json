@@ -11,10 +11,11 @@
     "node": "6.8.1"
   },
   "scripts": {
-    "start": "node ./src/app.js",
+    "start": "node app.js",
     "lint": "standard",
-    "build": "webpack --config ./webpack.prod.config.js --progress --colors",
-    "watch": "webpack --watch"
+    "build": "NODE_ENV=production webpack --config ./webpack.prod.config.js --progress --colors",
+    "buildDev": "webpack --config ./webpack.dev.config.js --progress --colors",
+    "watch": "webpack --watch  --config ./webpack.dev.config.js"
   },
   "author": "George Paul <george.allen.paul.3@gmail.com>",
   "license": "MIT",
