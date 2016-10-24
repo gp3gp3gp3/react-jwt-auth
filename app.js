@@ -5,7 +5,7 @@ const app = Server.app()
 if (process.env.NODE_ENV !== 'production') {
   const webpack = require('webpack')
   const webpackDevMiddleware = require('webpack-dev-middleware')
-  const config = require('../webpack.dev.config.js')
+  const config = require('./webpack.dev.config.js')
   const compiler = webpack(config)
 
   app.use(webpackDevMiddleware(compiler, {
