@@ -1,6 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './components/App.js'
+import { Router, Route, IndexRoute, browserHistory } from 'react-router'
+
+import App from './components/App'
+import Welcome from './components/Welcome'
 import './styles/app.scss'
 
-ReactDOM.render(<App />, document.querySelector('.container'))
+ReactDOM.render(
+  <Router history={browserHistory}>
+    <Route path='/' component={App}>
+      <IndexRoute component={Welcome} />
+    </Route>
+  </Router>,
+  document.querySelector('.container')
+)
