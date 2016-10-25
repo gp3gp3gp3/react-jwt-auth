@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router'
 
 class Header extends Component {
   renderLinks () {
@@ -10,7 +11,7 @@ class Header extends Component {
   render () {
     return (
       <nav className='navbar navbar-light'>
-        <a className='navbar-brand'>Tasks List</a>
+        <Link to='/' className='navbar-brand'>Tasks List</Link>
         <ul className='nav navbar-nav'>
           {this.renderLinks()}
         </ul>
