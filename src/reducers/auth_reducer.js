@@ -5,8 +5,8 @@ AUTH_ERROR,
 FETCH_MESSAGE
 } from '../actions/types'
 
-export default function (state={}, action) {
-  switch(action.type) {
+export default function (state = {}, action) {
+  switch (action.type) {
     case AUTH_USER:
       return { ...state, error: '', authenticated: true }
     case UNAUTH_USER:
