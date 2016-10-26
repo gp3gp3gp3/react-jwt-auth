@@ -33,7 +33,7 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-  authenticated: React.PropTypes.object
+  authenticated: React.PropTypes.bool
 }
 
 function mapStateToProps (state) {
