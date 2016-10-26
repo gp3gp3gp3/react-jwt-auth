@@ -103,6 +103,5 @@ function mapStateToProps (state) {
 
 export default reduxForm({
   form: 'signup',
-  fields: ['email', 'password', 'passwordConfirm'],
   validate
 }, mapStateToProps, actions)(Signup)
