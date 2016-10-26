@@ -7,6 +7,7 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 
 import App from './components/App'
 import Welcome from './components/Welcome'
+import Signup from './components/auth/Signup'
 import reducers from './reducers'
 import './styles/app.scss'
 
@@ -18,6 +19,7 @@ ReactDOM.render(
     <Router history={browserHistory}>
       <Route path='/' component={App}>
         <IndexRoute component={Welcome} />
+        <Route path='/signup' component={Signup} />
       </Route>
     </Router>
   </Provider>,
