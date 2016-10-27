@@ -7,6 +7,7 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 
 import App from './components/App'
 import Welcome from './components/Welcome'
+import Signin from './components/auth/Signin'
 import Signup from './components/auth/Signup'
 import Signout from './components/auth/Signout'
 import { AUTH_USER } from './actions/types'
@@ -26,6 +27,7 @@ ReactDOM.render(
     <Router history={browserHistory}>
       <Route path='/' component={App}>
         <IndexRoute component={Welcome} />
+        <Route path='signin' component={Signin} />
         <Route path='signup' component={Signup} />
         <Route path='signout' component={Signout} />
       </Route>
