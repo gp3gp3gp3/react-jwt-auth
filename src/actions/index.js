@@ -54,6 +54,7 @@ export function fetchMessage () {
       headers: { authorization: localStorage.getItem('token') }
     })
     .then(response => {
+      console.log(response)
       dispatch({
         type: FETCH_MESSAGE,
         payload: response.data.message
