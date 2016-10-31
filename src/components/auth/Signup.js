@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
 import * as actions from '../../actions'
 
@@ -19,6 +20,8 @@ class Signup extends Component {
   }
 
   handleFormSubmit (formProps) {
+    console.log("I'm the form props", formProps)
+    console.log("I'm the props", this.props)
     this.props.signupUser(formProps)
   }
 
@@ -101,7 +104,9 @@ function mapStateToProps (state) {
   return { errorMessage: state.auth.error }
 }
 
-export default reduxForm({
+Signup = reduxForm({ // eslint-disable-line
   form: 'signup',
   validate
-}, mapStateToProps, actions)(Signup)
+})(Signup)
+
+export default Signup = connect(mapStateToProps, actions)(Signup) // eslint-disable-line
