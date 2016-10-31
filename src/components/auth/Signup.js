@@ -8,7 +8,7 @@ const renderInput = field =>
     {
       field.meta.touched &&
       field.meta.error &&
-      <div className='error'>{field.meta.error}</div>
+        <div className='error'>{field.meta.error}</div>
     }
   </div>
 
