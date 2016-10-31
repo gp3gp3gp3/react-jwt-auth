@@ -20,8 +20,6 @@ class Signup extends Component {
   }
 
   handleFormSubmit (formProps) {
-    console.log("I'm the form props", formProps)
-    console.log("I'm the props", this.props)
     this.props.signupUser(formProps)
   }
 
