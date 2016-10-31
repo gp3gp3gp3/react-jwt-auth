@@ -16,7 +16,6 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 export function signinUser ({ email, password }) {
-  console.log(ROOT_URL)
   return function (dispatch) {
     axios.post(`${ROOT_URL}/signin`, { email, password })
     .then(response => {
