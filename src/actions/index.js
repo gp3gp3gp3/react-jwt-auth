@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { browserHistory } from 'react-router'
+import { hashHistory } from 'react-router'
 import {
   AUTH_USER,
   UNAUTH_USER,
@@ -15,7 +15,7 @@ export function signinUser ({ email, password }) {
     .then(response => {
       dispatch({ type: AUTH_USER })
       localStorage.setItem('token', response.data.token)
-      browserHistory.push('/feature')
+      hashHistory.push('/feature')
     })
     .catch(() => {
       dispatch(authError('Bad Login Info'))
@@ -29,7 +29,7 @@ export function signupUser ({ email, password }) {
     .then(response => {
       dispatch({ type: AUTH_USER })
       localStorage.setItem('token', response.data.token)
-      browserHistory.push('/feature')
+      hashHistory.push('/feature')
     })
     .catch(response => dispatch(authError(response.data.error)))
   }
