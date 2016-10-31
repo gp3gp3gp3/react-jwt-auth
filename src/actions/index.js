@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { hashHistory } from 'react-router'
+import { browserHistory } from 'react-router'
 import {
   AUTH_USER,
   UNAUTH_USER,
@@ -7,7 +7,13 @@ import {
   FETCH_MESSAGE
 } from './types'
 
-const ROOT_URL = 'http://localhost:3090'
+let ROOT_URL
+
+if (process.env.NODE_ENV !== 'production') {
+  ROOT_URL = 'http://localhost:3090'
+} else {
+  ROOT_URL = 'https://gp3-node-server.herokuapp.com/'
+}
 
 export function signinUser ({ email, password }) {
   return function (dispatch) {
@@ -15,7 +21,7 @@ export function signinUser ({ email, password }) {
     .then(response => {
       dispatch({ type: AUTH_USER })
       localStorage.setItem('token', response.data.token)
-      hashHistory.push('/feature')
+      browserHistory.push('/feature')
     })
     .catch(() => {
       dispatch(authError('Bad Login Info'))
@@ -29,7 +35,7 @@ export function signupUser ({ email, password }) {
     .then(response => {
       dispatch({ type: AUTH_USER })
       localStorage.setItem('token', response.data.token)
-      hashHistory.push('/feature')
+      browserHistory.push('/feature')
     })
     .catch(response => dispatch(authError(response.data.error)))
   }
