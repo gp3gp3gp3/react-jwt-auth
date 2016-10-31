@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
 import * as actions from '../../actions'
 
@@ -14,7 +15,7 @@ class Signin extends Component {
   }
 
   handleFormSubmit ({ email, password }) {
-    this.props.signInUser({ email, password })
+    this.props.signinUser({ email, password })
   }
 
   renderAlert () {
@@ -56,7 +57,7 @@ class Signin extends Component {
 }
 
 Signin.propTypes = {
-  signInUser: React.PropTypes.func,
+  signinUser: React.PropTypes.func,
   errorMessage: React.PropTypes.string,
   handleSubmit: React.PropTypes.func
 }
@@ -65,6 +66,8 @@ function mapStateToProps (state) {
   return { errorMessage: state.auth.error }
 }
 
-export default reduxForm({
+Signin = reduxForm({ // eslint-disable-line
   form: 'signin'
-}, mapStateToProps, actions)(Signin)
+})(Signin)
+
+export default Signin = connect(mapStateToProps, actions)(Signin) // eslint-disable-line
