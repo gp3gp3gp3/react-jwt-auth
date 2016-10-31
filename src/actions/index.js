@@ -12,7 +12,7 @@ let ROOT_URL
 if (process.env.NODE_ENV !== 'production') {
   ROOT_URL = 'http://localhost:3090'
 } else {
-  ROOT_URL = 'https://gp3-node-server.herokuapp.com/'
+  ROOT_URL = 'https://gp3-node-server.herokuapp.com'
 }
 
 export function signinUser ({ email, password }) {
