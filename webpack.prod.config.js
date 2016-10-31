@@ -29,7 +29,7 @@ module.exports = {
     preLoaders: [
       {
         test: /\.jsx?$/,
-        loader: 'eslint-loader',
+        loader: 'eslint-loader?parser=babel-eslint',
         exclude: /node_modules/
       }
     ],
