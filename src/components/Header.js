@@ -10,9 +10,6 @@ class Header extends Component {
           <Link to='/tasks' className='navbar-brand'>Tasks List</Link>
           <ul className='nav navbar-nav'>
             <li className='nav-item'>
-              <Link to='/tasks/new' className='nav-link'>Create Task</Link>
-            </li>
-            <li className='nav-item'>
               <Link to='/signout' className='nav-link'>Sign Out</Link>
             </li>
           </ul>

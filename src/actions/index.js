@@ -6,6 +6,7 @@ import {
   AUTH_ERROR,
   FETCH_TASKS
 } from './types'
+import { reset } from 'redux-form'
 
 let ROOT_URL
 
@@ -74,7 +75,8 @@ export function createTask ({ title }) {
       headers: { authorization: localStorage.getItem('token') }
     })
     .then(response => {
-      browserHistory.push('/tasks')
+      dispatch(fetchTasks())
+      dispatch(reset('newTask'))
     })
   }
 }
