@@ -27,7 +27,7 @@ class NewTask extends Component {
   handleFormSubmit ({ title }) {
     console.log('Im in handle form submit, here this.props', this.props)
     console.log('heres title', title)
-    // this.props.createTask({ title })
+    this.props.createTask({ title })
   }
 
   render () {
