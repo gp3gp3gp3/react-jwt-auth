@@ -4,7 +4,7 @@ import {
   AUTH_USER,
   UNAUTH_USER,
   AUTH_ERROR,
-  FETCH_MESSAGE
+  FETCH_TASKS
 } from './types'
 
 let ROOT_URL
@@ -21,7 +21,7 @@ export function signinUser ({ email, password }) {
     .then(response => {
       dispatch({ type: AUTH_USER })
       localStorage.setItem('token', response.data.token)
-      browserHistory.push('/feature')
+      browserHistory.push('/tasks')
     })
     .catch(() => {
       dispatch(authError('Bad Login Info'))
@@ -35,7 +35,7 @@ export function signupUser ({ email, password }) {
     .then(response => {
       dispatch({ type: AUTH_USER })
       localStorage.setItem('token', response.data.token)
-      browserHistory.push('/feature')
+      browserHistory.push('/tasks')
     })
     .catch(response => dispatch(authError(response.data.error)))
   }
@@ -54,14 +54,14 @@ export function signoutUser () {
   return { type: UNAUTH_USER }
 }
 
-export function fetchMessage () {
+export function fetchTasks () {
   return function (dispatch) {
     axios.get(ROOT_URL, {
       headers: { authorization: localStorage.getItem('token') }
     })
     .then(response => {
       dispatch({
-        type: FETCH_MESSAGE,
+        type: FETCH_TASKS,
         payload: response.data.tasks
       })
     })
@@ -74,7 +74,7 @@ export function createTask ({ title }) {
       headers: { authorization: localStorage.getItem('token') }
     })
     .then(response => {
-      browserHistory.push('/feature')
+      browserHistory.push('/tasks')
     })
   }
 }

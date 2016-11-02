@@ -11,7 +11,8 @@ import Signin from './components/auth/Signin'
 import Signup from './components/auth/Signup'
 import Signout from './components/auth/Signout'
 import RequireAuth from './components/auth/RequireAuth'
-import Feature from './components/Feature'
+import RedirectRoot from './components/auth/RedirectRoot'
+import Tasks from './components/tasks/index'
 import NewTask from './components/tasks/newTask'
 import { AUTH_USER } from './actions/types'
 import reducers from './reducers'
@@ -29,11 +30,11 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path='/' component={App}>
-        <IndexRoute component={Welcome} />
+        <IndexRoute component={RedirectRoot(Welcome)} />
         <Route path='signin' component={Signin} />
         <Route path='signup' component={Signup} />
         <Route path='signout' component={Signout} />
-        <Route path='feature' component={RequireAuth(Feature)} />
+        <Route path='tasks' component={RequireAuth(Tasks)} />
         <Route path='tasks/new' component={RequireAuth(NewTask)} />
       </Route>
     </Router>

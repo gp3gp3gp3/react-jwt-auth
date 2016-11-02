@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import * as actions from '../actions'
+import * as actions from '../../actions'
 
-class Feature extends Component {
+class Tasks extends Component {
   componentWillMount () {
-    this.props.fetchMessage()
+    this.props.fetchTasks()
   }
 
   renderTasks () {
@@ -19,7 +19,7 @@ class Feature extends Component {
   render () {
     return (
       <div>
-        <h1>Feature page</h1>
+        <h1>Tasks page</h1>
         <ul>
           {this.renderTasks()}
         </ul>
@@ -28,13 +28,13 @@ class Feature extends Component {
   }
 }
 
-Feature.propTypes = {
+Tasks.propTypes = {
   tasks: React.PropTypes.array,
-  fetchMessage: React.PropTypes.func
+  fetchTasks: React.PropTypes.func
 }
 
 function mapStateToProps (state) {
   return { tasks: state.auth.tasks }
 }
 
-export default connect(mapStateToProps, actions)(Feature)
+export default connect(mapStateToProps, actions)(Tasks)
