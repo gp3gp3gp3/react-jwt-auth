@@ -7,7 +7,7 @@ class Header extends Component {
     if (this.props.authenticated) {
       return (
         <nav className='navbar navbar-light'>
-          <Link to='/feature' className='navbar-brand'>Tasks List</Link>
+          <Link to='/tasks' className='navbar-brand'>Tasks List</Link>
           <ul className='nav navbar-nav'>
             <li className='nav-item'>
               <Link to='/tasks/new' className='nav-link'>Create Task</Link>
