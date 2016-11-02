@@ -14,7 +14,7 @@ export default function (state = {}, action) {
     case AUTH_ERROR:
       return { ...state, error: action.payload }
     case FETCH_MESSAGE:
-      return { ...state, message: action.payload }
+      return { ...state, tasks: action.payload }
   }
 
   return state
