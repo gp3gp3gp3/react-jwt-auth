@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as actions from '../../actions'
+import NewTask from './NewTask'
 
 class Tasks extends Component {
   componentWillMount () {
@@ -20,6 +21,7 @@ class Tasks extends Component {
     return (
       <div>
         <h1>Tasks page</h1>
+        <NewTask {...this.props} />
         <ul>
           {this.renderTasks()}
         </ul>
