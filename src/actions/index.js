@@ -63,8 +63,19 @@ export function fetchMessage () {
       console.log(response)
       dispatch({
         type: FETCH_MESSAGE,
-        payload: response.data.message
+        payload: response.data.tasks
       })
+    })
+  }
+}
+
+export function createTask ({ title }) {
+  return function (dispatch) {
+    axios.post(ROOT_URL, { title }, {
+      headers: { authorization: localStorage.getItem('token') }
+    })
+    .then(response => {
+      browserHistory.push('/feature')
     })
   }
 }
