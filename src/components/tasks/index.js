@@ -14,7 +14,7 @@ class Tasks extends Component {
     if (!tasks) {
       return <li>Loading...</li>
     }
-    return this.props.tasks.map((task, i) => <li key={i}>{task.title}</li>)
+    return this.props.tasks.map(task => <li key={task.id}>{task.title}</li>)
   }
 
   render () {
