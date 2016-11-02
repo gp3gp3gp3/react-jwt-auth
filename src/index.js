@@ -12,6 +12,7 @@ import Signup from './components/auth/Signup'
 import Signout from './components/auth/Signout'
 import RequireAuth from './components/auth/RequireAuth'
 import Feature from './components/Feature'
+import NewTask from './components/tasks/newTask'
 import { AUTH_USER } from './actions/types'
 import reducers from './reducers'
 import './styles/app.scss'
@@ -33,6 +34,7 @@ ReactDOM.render(
         <Route path='signup' component={Signup} />
         <Route path='signout' component={Signout} />
         <Route path='feature' component={RequireAuth(Feature)} />
+        <Route path='tasks/new' component={RequireAuth(NewTask)} />
       </Route>
     </Router>
   </Provider>,

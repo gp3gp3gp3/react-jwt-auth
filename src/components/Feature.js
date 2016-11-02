@@ -7,20 +7,34 @@ class Feature extends Component {
     this.props.fetchMessage()
   }
 
+  renderTasks () {
+    const { tasks } = this.props
+
+    if (!tasks) {
+      return <li>Loading...</li>
+    }
+    return this.props.tasks.map((task, i) => <li key={i}>{task.title}</li>)
+  }
+
   render () {
     return (
-      <div>Feature page</div>
+      <div>
+        <h1>Feature page</h1>
+        <ul>
+          {this.renderTasks()}
+        </ul>
+      </div>
     )
   }
 }
 
 Feature.propTypes = {
-  message: React.PropTypes.object,
+  tasks: React.PropTypes.array,
   fetchMessage: React.PropTypes.func
 }
 
 function mapStateToProps (state) {
-  return { message: state.auth.message }
+  return { tasks: state.auth.tasks }
 }
 
 export default connect(mapStateToProps, actions)(Feature)
