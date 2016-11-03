@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as actions from '../../actions'
 import NewTask from './NewTask'
+import Task from './Task'
 
 class Tasks extends Component {
   componentWillMount () {
@@ -14,7 +15,7 @@ class Tasks extends Component {
     if (!tasks) {
       return <li>Loading...</li>
     }
-    return this.props.tasks.map(task => <li key={task.id}>{task.title}</li>)
+    return tasks.map(task => <Task key={task.id} task={task} />)
   }
 
   render () {
