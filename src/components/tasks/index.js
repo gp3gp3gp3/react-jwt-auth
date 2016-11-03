@@ -6,6 +6,10 @@ import Task from './Task'
 
 class Tasks extends Component {
 
+  onToggleEditClick (id) {
+    this.props.toggleEditTask(id)
+  }
+
   onTaskDeleteClick (id) {
     this.props.deleteTask(id)
   }
@@ -23,7 +27,8 @@ class Tasks extends Component {
     return tasks.map(task =>
       <Task
         key={task.id}
-        task={task}
+        {...task}
+        onEditClick={() => this.onToggleEditClick(task.id)}
         onDelClick={() => this.onTaskDeleteClick(task.id)}
       />
     )
@@ -45,6 +50,7 @@ class Tasks extends Component {
 Tasks.propTypes = {
   tasks: React.PropTypes.array,
   fetchTasks: React.PropTypes.func,
+  toggleEditTask: React.PropTypes.func,
   deleteTask: React.PropTypes.func
 }
 
