@@ -80,3 +80,14 @@ export function createTask ({ title }) {
     })
   }
 }
+
+export function deleteTask (id) {
+  return function (dispatch) {
+    axios.delete(`${ROOT_URL}/tasks/${id}`, {
+      headers: { authorization: localStorage.getItem('token') }
+    })
+    .then(response => {
+      dispatch(fetchTasks())
+    })
+  }
+}
