@@ -4,7 +4,8 @@ import {
   AUTH_USER,
   UNAUTH_USER,
   AUTH_ERROR,
-  FETCH_TASKS
+  FETCH_TASKS,
+  TOGGLE_EDIT_TASK
 } from './types'
 import { reset } from 'redux-form'
 
@@ -89,5 +90,12 @@ export function deleteTask (id) {
     .then(response => {
       dispatch(fetchTasks())
     })
+  }
+}
+
+export function toggleEditTask (id) {
+  return {
+    type: TOGGLE_EDIT_TASK,
+    payload: id
   }
 }
