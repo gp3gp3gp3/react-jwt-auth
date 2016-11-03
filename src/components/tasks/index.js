@@ -5,6 +5,11 @@ import NewTask from './NewTask'
 import Task from './Task'
 
 class Tasks extends Component {
+
+  onTaskDeleteClick (id) {
+    this.props.deleteTask(id)
+  }
+
   componentWillMount () {
     this.props.fetchTasks()
   }
@@ -15,7 +20,13 @@ class Tasks extends Component {
     if (!tasks) {
       return <li>Loading...</li>
     }
-    return tasks.map(task => <Task key={task.id} task={task} />)
+    return tasks.map(task =>
+      <Task
+        key={task.id}
+        task={task}
+        onDelClick={() => this.onTaskDeleteClick(task.id)}
+      />
+    )
   }
 
   render () {
@@ -33,7 +44,8 @@ class Tasks extends Component {
 
 Tasks.propTypes = {
   tasks: React.PropTypes.array,
-  fetchTasks: React.PropTypes.func
+  fetchTasks: React.PropTypes.func,
+  deleteTask: React.PropTypes.func
 }
 
 function mapStateToProps (state) {
