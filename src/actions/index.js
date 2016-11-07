@@ -101,7 +101,6 @@ export function toggleEditTask (id) {
 }
 
 export function editTask ({ title, id }) {
-  console.log('im in the action creator', title, id)
   return function (dispatch) {
     axios.put(`${ROOT_URL}/tasks/${id}`, { title }, {
       headers: { authorization: localStorage.getItem('token') }
