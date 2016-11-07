@@ -1,33 +1,47 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Field, reduxForm } from 'redux-form'
 import * as actions from '../../actions'
 
 class Task extends Component {
   constructor () {
     super()
+    this.state = {
+      title: ''
+    }
     this.handleFormSubmit = this.handleFormSubmit.bind(this)
+    this.handleInputChange = this.handleInputChange.bind(this)
   }
 
-  handleFormSubmit (props) {
-    this.props.editTask(props)
+  componentDidMount () {
+    this.setState({title: this.props.title})
+  }
+
+  handleFormSubmit (event) {
+    const { title } = this.state
+    const { id, editTask } = this.props
+    event.preventDefault()
+    editTask({title, id})
+  }
+
+  handleInputChange (event) {
+    this.setState({title: event.target.value})
   }
 
   render () {
     const {
       onEditClick,
       editing,
-      title,
-      handleSubmit,
       onDelClick
     } = this.props
 
+    const { title } = this.state
+
     if (editing) {
       return (
-        <form onSubmit={handleSubmit(this.handleFormSubmit)}>
+        <form onSubmit={this.handleFormSubmit}>
           <fieldset className='form-group'>
             <label onClick={onEditClick}>Title:</label>
-            <Field name='title' component='input' type='text' />
+            <input type='text' value={title} onChange={this.handleInputChange} />
           </fieldset>
         </form>
       )
@@ -50,17 +64,4 @@ Task.propTypes = {
   editTask: React.PropTypes.func
 }
 
-function mapStateToProps (state, ownProps) {
-  return {
-    initialValues: {
-      title: ownProps.title,
-      id: ownProps.id
-    }
-  }
-}
-
-Task = reduxForm({ // eslint-disable-line
-  form: 'editTask'
-})(Task)
-
-export default Task = connect(mapStateToProps, actions)(Task) // eslint-disable-line
+export default Task = connect(null, actions)(Task) // eslint-disable-line
