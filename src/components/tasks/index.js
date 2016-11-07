@@ -2,8 +2,18 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as actions from '../../actions'
 import NewTask from './NewTask'
+import Task from './Task'
 
 class Tasks extends Component {
+
+  onToggleEditClick (id) {
+    this.props.toggleEditTask(id)
+  }
+
+  onTaskDeleteClick (id) {
+    this.props.deleteTask(id)
+  }
+
   componentWillMount () {
     this.props.fetchTasks()
   }
@@ -14,7 +24,14 @@ class Tasks extends Component {
     if (!tasks) {
       return <li>Loading...</li>
     }
-    return this.props.tasks.map((task, i) => <li key={i}>{task.title}</li>)
+    return tasks.map(task =>
+      <Task
+        key={task.id}
+        {...task}
+        onEditClick={() => this.onToggleEditClick(task.id)}
+        onDelClick={() => this.onTaskDeleteClick(task.id)}
+      />
+    )
   }
 
   render () {
@@ -32,7 +49,9 @@ class Tasks extends Component {
 
 Tasks.propTypes = {
   tasks: React.PropTypes.array,
-  fetchTasks: React.PropTypes.func
+  fetchTasks: React.PropTypes.func,
+  toggleEditTask: React.PropTypes.func,
+  deleteTask: React.PropTypes.func
 }
 
 function mapStateToProps (state) {

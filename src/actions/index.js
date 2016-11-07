@@ -4,7 +4,8 @@ import {
   AUTH_USER,
   UNAUTH_USER,
   AUTH_ERROR,
-  FETCH_TASKS
+  FETCH_TASKS,
+  TOGGLE_EDIT_TASK
 } from './types'
 import { reset } from 'redux-form'
 
@@ -77,6 +78,35 @@ export function createTask ({ title }) {
     .then(response => {
       dispatch(fetchTasks())
       dispatch(reset('newTask'))
+    })
+  }
+}
+
+export function deleteTask (id) {
+  return function (dispatch) {
+    axios.delete(`${ROOT_URL}/tasks/${id}`, {
+      headers: { authorization: localStorage.getItem('token') }
+    })
+    .then(response => {
+      dispatch(fetchTasks())
+    })
+  }
+}
+
+export function toggleEditTask (id) {
+  return {
+    type: TOGGLE_EDIT_TASK,
+    payload: id
+  }
+}
+
+export function editTask ({ title, id }) {
+  return function (dispatch) {
+    axios.put(`${ROOT_URL}/tasks/${id}`, { title }, {
+      headers: { authorization: localStorage.getItem('token') }
+    })
+    .then(response => {
+      dispatch(fetchTasks())
     })
   }
 }
