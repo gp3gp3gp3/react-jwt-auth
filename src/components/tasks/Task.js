@@ -40,8 +40,10 @@ class Task extends Component {
       return (
         <form onSubmit={this.handleFormSubmit}>
           <fieldset className='form-group'>
-            <label onClick={onEditClick}>Title:</label>
+            <label>Title:</label>
             <input type='text' value={title} onChange={this.handleInputChange} />
+            <button action='submit' className='btn btn-primary'>Submit</button>
+            <button onClick={onEditClick} className='btn btn-secondary'>Cancel</button>
           </fieldset>
         </form>
       )
