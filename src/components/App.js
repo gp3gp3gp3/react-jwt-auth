@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Header from './Header'
-import RaisedButton from 'material-ui/RaisedButton'
 
 class App extends Component {
   render () {
@@ -8,7 +7,6 @@ class App extends Component {
       <div>
         <Header />
         {this.props.children}
-        <RaisedButton label='default' />
       </div>
     )
   }
