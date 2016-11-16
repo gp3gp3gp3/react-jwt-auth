@@ -4,6 +4,9 @@ import reduxThunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import injectTapEventPlugin from 'react-tap-event-plugin'
+injectTapEventPlugin()
 
 import App from './components/App'
 import Welcome from './components/Welcome'
@@ -27,15 +30,17 @@ if (token) {
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={browserHistory}>
-      <Route path='/' component={App}>
-        <IndexRoute component={RedirectRoot(Welcome)} />
-        <Route path='signin' component={Signin} />
-        <Route path='signup' component={Signup} />
-        <Route path='signout' component={Signout} />
-        <Route path='tasks' component={RequireAuth(Tasks)} />
-      </Route>
-    </Router>
+    <MuiThemeProvider>
+      <Router history={browserHistory}>
+        <Route path='/' component={App}>
+          <IndexRoute component={RedirectRoot(Welcome)} />
+          <Route path='signin' component={Signin} />
+          <Route path='signup' component={Signup} />
+          <Route path='signout' component={Signout} />
+          <Route path='tasks' component={RequireAuth(Tasks)} />
+        </Route>
+      </Router>
+    </MuiThemeProvider>
   </Provider>,
   document.querySelector('.container')
 )
