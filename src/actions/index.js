@@ -39,7 +39,7 @@ export function signupUser ({ email, password }) {
       localStorage.setItem('token', response.data.token)
       browserHistory.push('/tasks')
     })
-    .catch(response => dispatch(authError(response.data.error)))
+    .catch(res => dispatch(authError(res.response.data.error)))
   }
 }
 
