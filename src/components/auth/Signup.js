@@ -1,17 +1,35 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
+import TextField from 'material-ui/TextField'
+import RaisedButton from 'material-ui/RaisedButton'
+import Paper from 'material-ui/Paper'
 import * as actions from '../../actions'
 
-const renderInput = field =>
-  <div>
-    <input {...field.input} type={field.type} className='form-control' />
-    {
-      field.meta.touched &&
-      field.meta.error &&
-        <div className='error'>{field.meta.error}</div>
-    }
-  </div>
+const paperStyle = {
+  height: 400,
+  width: 400,
+  margin: 20,
+  textAlign: 'center',
+  display: 'inline-block'
+}
+
+const renderInput = ({ input, label, meta: { touched, error }, ...custom }) => (
+  <TextField
+    style={{textAlign: 'initial'}}
+    hintText={label}
+    floatingLabelText={label}
+    errorText={touched && error}
+    {...input}
+    {...custom}
+  />
+)
+
+renderInput.propTypes = {
+  input: React.PropTypes.object,
+  label: React.PropTypes.string,
+  meta: React.PropTypes.object
+}
 
 class Signup extends Component {
   constructor () {
@@ -26,8 +44,8 @@ class Signup extends Component {
   renderAlert () {
     if (this.props.errorMessage) {
       return (
-        <div className='alert alert-danger'>
-          <strong>Oops!</strong> {this.props.errorMessage}
+        <div style={{color: 'rgb(244, 67, 54)'}}>
+          {this.props.errorMessage}
         </div>
       )
     }
@@ -37,61 +55,68 @@ class Signup extends Component {
     const { handleSubmit } = this.props
 
     return (
-      <form onSubmit={handleSubmit(this.handleFormSubmit)}>
-        <fieldset className='form-group'>
-          <label>Email:</label>
-          <Field
-            name='email'
-            component={renderInput}
-            type='text'
-          />
-        </fieldset>
-        <fieldset className='form-group'>
-          <label>Password:</label>
-          <Field
-            name='password'
-            component={renderInput}
-            type='password'
-          />
-        </fieldset>
-        <fieldset className='form-group'>
-          <label>Confirm Password:</label>
-          <Field
-            name='passwordConfirm'
-            component={renderInput}
-            type='password'
-          />
-        </fieldset>
-        {this.renderAlert()}
-        <button action='submit' className='btn btn-primary'>Sign Up</button>
-      </form>
+      <div style={{textAlign: 'center'}}>
+        <Paper style={paperStyle} zDepth={1}>
+          <h2>Sign Up</h2>
+          <form onSubmit={handleSubmit(this.handleFormSubmit)}>
+            <div>
+              <Field
+                name='email'
+                component={renderInput}
+                label='Email'
+              />
+            </div>
+            <div>
+              <Field
+                name='password'
+                component={renderInput}
+                label='Password'
+                type='password'
+              />
+            </div>
+            <div>
+              <Field
+                name='passwordConfirm'
+                component={renderInput}
+                label='Password Confirm'
+                type='password'
+              />
+            </div>
+            {this.renderAlert()}
+            <RaisedButton
+              label='Submit'
+              action='submit'
+              style={{margin: 25}}
+              primary
+              type='submit'
+            />
+          </form>
+        </Paper>
+      </div>
     )
   }
 }
 
 Signup.propTypes = {
   signupUser: React.PropTypes.func,
-  fields: React.PropTypes.array,
   errorMessage: React.PropTypes.string,
   handleSubmit: React.PropTypes.func
 }
 
-function validate (formProps) {
+const validate = values => {
   const errors = {}
+  const requiredFields = ['email', 'password', 'passwordConfirm']
+  requiredFields.forEach(field => {
+    if (!values[field]) {
+      errors[field] = 'Required'
+    }
+  })
 
-  if (!formProps.email) {
-    errors.email = 'Please enter an email'
+  if (values.email && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    errors.email = 'Invalid email address'
   }
 
-  if (!formProps.password) {
-    errors.password = 'Please enter a password'
-  }
-
-  if (!formProps.passwordConfirm) {
-    errors.passwordConfirm = 'Please enter a password confirmation'
-  }
-
-  if (formProps.password !== formProps.passwordConfirm) {
+  if (values.password !== values.passwordConfirm) {
     errors.password = 'Passwords must match'
   }
 
