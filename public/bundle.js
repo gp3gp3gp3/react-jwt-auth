@@ -2782,7 +2782,7 @@
 /* 458 */
 /***/ function(module, exports, __webpack_require__) {
 
-	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(2);\n\nvar _react2 = _interopRequireDefault(_react);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.default = function () {\n  return _react2.default.createElement(\n    'div',\n    null,\n    'Sign in to view tasks'\n  );\n};\n\n//////////////////\n// WEBPACK FOOTER\n// ./src/components/Welcome.js\n// module id = 458\n// module chunks = 0\n//# sourceURL=webpack:///./src/components/Welcome.js?");
+	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(2);\n\nvar _react2 = _interopRequireDefault(_react);\n\n__webpack_require__(723);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.default = function () {\n  return _react2.default.createElement(\n    'h2',\n    null,\n    'Sign in to view tasks'\n  );\n};\n\n//////////////////\n// WEBPACK FOOTER\n// ./src/components/Welcome.js\n// module id = 458\n// module chunks = 0\n//# sourceURL=webpack:///./src/components/Welcome.js?");
 
 /***/ },
 /* 459 */
@@ -4362,6 +4362,18 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(2);\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _pure = __webpack_require__(682);\n\nvar _pure2 = _interopRequireDefault(_pure);\n\nvar _SvgIcon = __webpack_require__(691);\n\nvar _SvgIcon2 = _interopRequireDefault(_SvgIcon);\n\nfunction _interopRequireDefault(obj) {\n  return obj && obj.__esModule ? obj : { default: obj };\n}\n\nvar ActionHome = function ActionHome(props) {\n  return _react2.default.createElement(_SvgIcon2.default, props, _react2.default.createElement('path', { d: 'M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z' }));\n};\nActionHome = (0, _pure2.default)(ActionHome);\nActionHome.displayName = 'ActionHome';\nActionHome.muiName = 'SvgIcon';\n\nexports.default = ActionHome;\n\n//////////////////\n// WEBPACK FOOTER\n// ./~/material-ui/svg-icons/action/home.js\n// module id = 722\n// module chunks = 0\n//# sourceURL=webpack:///./~/material-ui/svg-icons/action/home.js?");
+
+/***/ },
+/* 723 */
+/***/ function(module, exports, __webpack_require__) {
+
+	eval("// style-loader: Adds some css to the DOM by adding a <style> tag\n\n// load the styles\nvar content = __webpack_require__(724);\nif(typeof content === 'string') content = [[module.id, content, '']];\n// add the styles to the DOM\nvar update = __webpack_require__(673)(content, {});\nif(content.locals) module.exports = content.locals;\n// Hot Module Replacement\nif(false) {\n\t// When the styles change, update the <style> tags\n\tif(!content.locals) {\n\t\tmodule.hot.accept(\"!!./../../node_modules/css-loader/index.js!./../../node_modules/sass-loader/index.js!./Welcome.scss\", function() {\n\t\t\tvar newContent = require(\"!!./../../node_modules/css-loader/index.js!./../../node_modules/sass-loader/index.js!./Welcome.scss\");\n\t\t\tif(typeof newContent === 'string') newContent = [[module.id, newContent, '']];\n\t\t\tupdate(newContent);\n\t\t});\n\t}\n\t// When the module is disposed, remove the <style> tags\n\tmodule.hot.dispose(function() { update(); });\n}\n\n//////////////////\n// WEBPACK FOOTER\n// ./src/styles/Welcome.scss\n// module id = 723\n// module chunks = 0\n//# sourceURL=webpack:///./src/styles/Welcome.scss?");
+
+/***/ },
+/* 724 */
+/***/ function(module, exports, __webpack_require__) {
+
+	eval("exports = module.exports = __webpack_require__(672)();\n// imports\n\n\n// module\nexports.push([module.id, \"h2 {\\n  text-align: center; }\\n\", \"\"]);\n\n// exports\n\n\n//////////////////\n// WEBPACK FOOTER\n// ./~/css-loader!./~/sass-loader!./src/styles/Welcome.scss\n// module id = 724\n// module chunks = 0\n//# sourceURL=webpack:///./src/styles/Welcome.scss?./~/css-loader!./~/sass-loader");
 
 /***/ }
 /******/ ]);

@@ -1,3 +1,4 @@
 import React from 'react'
+import '../styles/Welcome.scss'
 
-export default () => <div>Sign in to view tasks</div>
+export default () => <h2>Sign in to view tasks</h2>
